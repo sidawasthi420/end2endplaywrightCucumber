@@ -23,6 +23,7 @@ test('validate the title of the page 1', async ({browser}) => {                /
         const context = await browser.newContext();               //create a new incognito browser context (no cookies or cache)
         const page = await context.newPage(); 
         await mainClass.goTo("https://nutrienagsolutions.com/");
+        await page.waitForLoadState('domcontentloaded');
         await expect(page).toHaveTitle("Nutrien Ag Solutions");
         const [newPage] = await Promise.all(
           [
