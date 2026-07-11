@@ -1,4 +1,4 @@
-import {test, expect, Locator} from '@playwright/test';
+import {test, expect, Locator, Page} from '@playwright/test';
 import { MainClass } from '../config/shivohamGifts.main';
 import { navigateToProducts } from '../pages/homePageFunctions';
 
@@ -19,16 +19,15 @@ test('validate the title of the page', async function({page}){              //no
         await navigateToProducts(mainClass);
 });
 
-test('validate the title of the page 1', async ({browser}) => {                //arrow function
-        const context = await browser.newContext();               //create a new incognito browser context (no cookies or cache)
-        const page = await context.newPage(); 
+test('validate the title of the page 1', async ({ page }) => {                //arrow function
         await mainClass.goTo("https://nutrienagsolutions.com/");
-        await page.waitForLoadState('domcontentloaded');
         await expect(page).toHaveTitle("Nutrien Ag Solutions");
+
+        const context = page.context();
         const [newPage] = await Promise.all(
           [
               context.waitForEvent('page'),  //listen for any new page pending, rejected, fulfilled
-              await page.locator('//a[contains(text(),"Nutrien Solutions")]').first().click()
+              page.locator('//a[contains(text(),"Nutrien Solutions")]').first().click()
           ]);
         await newPage.waitForLoadState();
 });
