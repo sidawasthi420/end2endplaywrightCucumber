@@ -1,0 +1,24 @@
+{
+  "name": "end2endplaywright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "smoke": "npx playwright test firstTestAutomationExercise.spec.ts --project=webkit",
+    "regression": "npx playwright test",
+    "showReport": "npx playwright show-report",
+    "cucumber": "cucumber-js --require-module ts-node/register --require \"features/**/*.ts\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "@cucumber/cucumber": "^13.0.0"
+  }
+}
