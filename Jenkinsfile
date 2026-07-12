@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/sidawasthi420/end2endplaywright.git'
+                git branch: 'main', url: 'https://github.com/sidawasthi420/end2endplaywrightCucumber.git'
             }
         }
         stage('Install Dependencies') {
