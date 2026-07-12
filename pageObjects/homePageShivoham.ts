@@ -1,7 +1,6 @@
 import { Locator, Page } from "@playwright/test";
 
 export class HomePageShivoham {
-    
     readonly page: Page;
     readonly btnClosePopup: Locator;
     readonly logoHomePage: Locator;
