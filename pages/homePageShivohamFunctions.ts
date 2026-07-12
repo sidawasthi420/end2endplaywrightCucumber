@@ -28,7 +28,6 @@ export const getFulfilledResponse = async (page: Page,api: String): Promise<any>
 
   const text = await response.text();         // always succeeds
   // console.log('save_cart.php returned →\n', text);
-
   // the server currently sends two JSON objects back‑to‑back.
   // split them and keep the last one (which contains the status).
   const pieces = text
