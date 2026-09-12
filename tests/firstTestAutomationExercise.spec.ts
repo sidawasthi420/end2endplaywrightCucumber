@@ -16,6 +16,7 @@ test('validate the title of the page', async function({page}){              //no
         
         await mainClass.goTo("https://automationexercise.com/");
         await navigateToProducts(mainClass);
+        await page.waitForTimeout(10000);  //wait for 5 seconds
 });
 
 test('validate the title of the page 1', async ({ page }) => {                //arrow function
@@ -28,5 +29,6 @@ test('validate the title of the page 1', async ({ page }) => {                //
               page.locator('//a[contains(text(),"Nutrien Solutions")]').first().click()
           ]);
         await newPage.waitForLoadState();
+        await page.waitForTimeout(10000);  //wait for 5 seconds
 });
 });

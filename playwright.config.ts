@@ -20,17 +20,19 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 1 : undefined,
+  workers: process.env.CI ? 4 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',   //For generating the reports ---------  npx playwright show-report
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
+  //globalSetup: require.resolve('./tests/global-setup'),
   use: {
+    //storageState: 'auth.json',  // all tests start authenticated
     /* Base URL to use in actions like `await page.goto('')`. */
     // baseURL: 'http://localhost:3000',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
-    headless: true,
+    headless: false,
     //browserName: 'webkit',          //used to select browser for run
     //trace: 'retain-on-failure',     //on, off
     //screenshot: on,                 //off, retain-on-failure
@@ -48,15 +50,15 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
 
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
 
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: { ...devices['Desktop Safari'] },
+    // },
 
     /* Test against mobile viewports. */
     // {
